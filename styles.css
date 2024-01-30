@@ -49,3 +49,53 @@ header a:hover {
     color: #ffffff;
     font-weight: bold;
 }
+
+/* Style adjustments for the contact form */
+.contact-form {
+    background: #f9f9f9;
+    padding: 15px;
+    border: 1px solid #e2e2e2;
+    border-radius: 5px;
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+.contact-form label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box; /* Makes sure the padding doesn't affect the overall width */
+    margin-bottom: 10px;
+}
+
+.contact-form textarea {
+    height: 150px;
+}
+
+.contact-form button[type="submit"] {
+    background: #333;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.contact-form button[type="submit"]:hover {
+    background: #555;
+}
+
+/* Ensure the button text is centered */
+.contact-form button[type="submit"] {
+    width: 100%;
+    box-sizing: border-box;
+}
