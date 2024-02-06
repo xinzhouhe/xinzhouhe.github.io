@@ -57,6 +57,10 @@ header a:hover {
     font-weight: bold;
 }
 
+body {
+    background-color: #909090;
+}
+
 .content-wrap {
     flex: 1 0 auto; /* This line will push the footer down */
 }
