@@ -77,7 +77,7 @@ footer {
 .contact-form {
     background: #f9f9f9;
     padding: 15px;
-    border: 1px solid #e2e2e2;
+    border: 0px solid #e2e2e2;
     border-radius: 5px;
     max-width: 600px;
     margin: 20px auto;
@@ -93,8 +93,8 @@ footer {
 .contact-form textarea {
     width: 100%;
     padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+    border: 0px solid #ddd;
+    border-radius: 0px;
     box-sizing: border-box; /* Makes sure the padding doesn't affect the overall width */
     margin-bottom: 10px;
 }
@@ -108,7 +108,7 @@ footer {
     color: #fdf9e6;
     border: none;
     padding: 10px 20px;
-    border-radius: 4px;
+    border-radius: 0px;
     cursor: pointer;
     transition: background 0.3s ease;
 }
