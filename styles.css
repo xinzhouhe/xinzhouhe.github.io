@@ -42,7 +42,7 @@ header nav {
     margin-top: 10px;
 }
 header .highlight, header .current a {
-    color: #00274C;
+    color: #FFCB05;
     font-weight: bold;
 }
 header a:hover {
