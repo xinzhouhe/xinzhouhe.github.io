@@ -1,11 +1,18 @@
 /* styles.css */
+/*
+ * Importing the font
+ */
+ @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;700&display=swap');
+
 html, body {
     height: 100%;
     margin: 0;
 }
 
 body {
-    font-family: Arial, sans-serif;
+    background-color: #fdf9e6;
+    font-family: 'IBM Plex Sans';
+    color:#525252;
     margin: 0;
     padding: 0;
     line-height: 1.6;
@@ -55,10 +62,6 @@ header .highlight, header .current a {
 header a:hover {
     color: #FFCB05;
     font-weight: bold;
-}
-
-body {
-    background-color: #909090;
 }
 
 .content-wrap {
