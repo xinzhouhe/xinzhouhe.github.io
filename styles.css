@@ -200,11 +200,55 @@ label {
     margin-top: 20px;
 }
 
-input[type="text"], input[type="email"] {
-    width: calc(100% - 20px);
-    padding: 10px;
-    margin-top: 5px;
+.source-code-request-form {
+    background: #f9f9f9;
+    padding: 15px;
+    border: 0px solid #e2e2e2;
+    border-radius: 5px;
+    max-width: 600px;
+    margin: 20px auto;
 }
+
+.source-code-request-form label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+.source-code-request-form input[type="text"],
+.source-code-request-form input[type="email"],
+.source-code-request-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 0px solid #ddd;
+    border-radius: 0px;
+    box-sizing: border-box; /* Makes sure the padding doesn't affect the overall width */
+    margin-bottom: 10px;
+}
+
+.source-code-request-form textarea {
+    height: 150px;
+}
+
+.source-code-request-form button[type="submit"] {
+    background: #333;
+    color: #fdf9e6;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 0px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.source-code-request-form button[type="submit"]:hover {
+    background: #777777;
+}
+
+/* Ensure the button text is centered */
+.source-code-request-form button[type="submit"] {
+    width: 100%;
+    box-sizing: border-box;
+}
+
 
 .buttons {
     margin-top: 20px;
