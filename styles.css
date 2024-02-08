@@ -184,3 +184,36 @@ footer {
     width: 100%;
     box-sizing: border-box;
 }
+
+/* Projects access request */
+.form-container, .confirmation-container {
+    width: 90%;
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+label {
+    display: block;
+    margin-top: 20px;
+}
+
+input[type="text"], input[type="email"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-top: 5px;
+}
+
+.buttons {
+    margin-top: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+/***************************/
