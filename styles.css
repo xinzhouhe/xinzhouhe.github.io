@@ -73,6 +73,31 @@ footer {
     /* Add your styling here (background, padding, etc.) */
 }
 
+/* Courses page */
+.course-section {
+    margin: 2rem auto;
+    padding: 1rem;
+    max-width: 800px;
+}
+
+.course-section h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.course-section ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.course-section li {
+    background-color: #f4f4f4;
+    margin-bottom: 0.5rem;
+    padding: 0.5rem;
+    border-left: 4px solid #00274C; /* This color can match your theme */
+}
+
+/* Projects page*/
 .projects-section {
     background-color: #f4f4f4; /* Adjust the background color as needed */
     padding: 2rem;
