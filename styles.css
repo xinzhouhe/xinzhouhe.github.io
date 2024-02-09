@@ -257,5 +257,33 @@ footer {
     box-sizing: border-box;
 }
 
-
 /***************************/
+
+/* Mobile Styling */
+@media only screen and (max-width: 768px) {
+    /* Adjust styles for mobile here */
+
+    .container {
+        width: 95%;
+        padding: 0;
+    }
+
+    .hero {
+        /* Adjust hero section padding or margins as necessary for smaller screens */
+        padding: 20px;
+    }
+
+    .hero-content h1 {
+        font-size: 1.5rem; /* Smaller font size for hero title */
+    }
+
+    .hero-content p {
+        font-size: 1rem; /* Smaller font size for hero subtitle */
+    }
+
+    .hero-btn {
+        padding: 10px 15px; /* Adjust button padding as necessary */
+    }
+
+    /* Add additional style adjustments for other elements as needed */
+}
