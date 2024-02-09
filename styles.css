@@ -83,6 +83,7 @@ header a:hover {
 }
 
 footer {
+    background-color: #00274C;
     flex-shrink: 0;
     /* Prevents the footer from shrinking */
     /* Add your styling here (background, padding, etc.) */
