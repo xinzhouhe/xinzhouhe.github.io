@@ -84,6 +84,8 @@ header a:hover {
 
 footer {
     background-color: #00274C;
+    color: #FFCB05;
+    border-width: 5px;
     flex-shrink: 0;
     /* Prevents the footer from shrinking */
     /* Add your styling here (background, padding, etc.) */
@@ -209,7 +211,7 @@ footer {
 /* ***********************
  * Projects access request
  */
- .source-code-request-form {
+.source-code-request-form {
     background: #f9f9f9;
     padding: 15px;
     border: 0px solid #e2e2e2;
@@ -230,7 +232,8 @@ footer {
     padding: 10px;
     border: 0px solid #ddd;
     border-radius: 0px;
-    box-sizing: border-box; /* Makes sure the padding doesn't affect the overall width */
+    box-sizing: border-box;
+    /* Makes sure the padding doesn't affect the overall width */
     margin-bottom: 10px;
 }
 
@@ -275,15 +278,18 @@ footer {
     }
 
     .hero-content h1 {
-        font-size: 1.5rem; /* Smaller font size for hero title */
+        font-size: 1.5rem;
+        /* Smaller font size for hero title */
     }
 
     .hero-content p {
-        font-size: 1rem; /* Smaller font size for hero subtitle */
+        font-size: 1rem;
+        /* Smaller font size for hero subtitle */
     }
 
     .hero-btn {
-        padding: 10px 15px; /* Adjust button padding as necessary */
+        padding: 10px 15px;
+        /* Adjust button padding as necessary */
     }
 
     /* Add additional style adjustments for other elements as needed */
