@@ -15,3 +15,17 @@ document.addEventListener('DOMContentLoaded', (event) => {
     document.getElementById("navbar").innerHTML = navbar;
 });
 
+document.addEventListener('DOMContentLoaded', (event) => {
+    var footer = `
+        <section class="container">
+            <p>Copyright &copy; Xinzhou He 2024-2024</p>
+            <p>Ann Arbor, MI USA</p>
+        </section>
+        <section class="alternate-link">
+            <a href="https://www-personal.umich.edu/~xinzhouh" class="project-link">Alternative Link</a>
+        </section>
+        <link rel="stylesheet" href="styles.css">
+    `;
+
+    document.getElementById("footer").innerHTML = footer;
+});
