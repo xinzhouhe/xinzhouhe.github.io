@@ -1,0 +1,9 @@
+from .auth_schema import RegisterSchema, LoginSchema
+from .student_schema import StudentSchema
+from .course_schema import UniversityCourseSchema, CommunityCollegeCourseSchema, EquivalentCourseSchema
+from .university_schema import UniversitySchema
+from .department_schema import DepartmentSchema
+from .college_schema import CommunityCollegeSchema
+from .requirement_schema import RequirementSchema, CourseRequirementSchema
+from .student_course_schema import StudentCourseSchema
+from .university_course_cost_schema import UniversityCourseCostSchema

@@ -1,0 +1,41 @@
+{
+    "type": "courses",
+    "data":[
+    {
+        "university_name": "Rutgers New Brunswick",
+        "university_state": "NJ",
+        "community_college_name": "Raritan Valley Community College",
+        "community_college_state": "NJ",
+        "courses": [
+            {
+                "cc_class_code": "BIOL101",
+                "cc_course_name": "General Biology 1",
+                "cc_in_state_fee": 500,
+                "cc_out_state_fee": 700,
+                "cc_international_fee": 1000,
+                "cc_credits": 4,
+                "university_course_code": "01-119-115",
+                "university_course_name": "General Biology 1",
+                "university_department": "School of Natural Science",
+                "gen_ed_attributes": ["NS"],
+                "uc_credits": 4,
+                "cc_online": 2 
+            },
+            {
+                "cc_class_code": "BIOL142",
+                "cc_course_name": "Intro to Nutrition",
+                "cc_in_state_fee": 500,
+                "cc_out_state_fee": 700,
+                "cc_international_fee": 1000,
+                "cc_credits": 3,
+                "university_course_code": "11-709-255",
+                "university_course_name": "Nutrition and Health",
+                "university_department": "School of Natural Science",
+                "gen_ed_attributes": ["NS"],
+                "uc_credits": 3,
+                "cc_online": 1
+            }
+        ]
+    }
+]
+}

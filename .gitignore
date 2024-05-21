@@ -1,0 +1,11 @@
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.env
+*.flaskenv
+instance/
+.mypy_cache/
+.pytest_cache/
+.pyre/

@@ -1,0 +1,29 @@
+{
+    "type": "university",
+    "data":[
+    {
+        "university_name": "University of Delaware",
+        "university_state": "DE",
+        "prices": [
+            {
+                "credits": 1,
+                "in_state": 500,
+                "out_of_state": 1000,
+                "international": 1500
+            },
+            {
+                "credits": 2,
+                "in_state": 1000,
+                "out_of_state": 2000,
+                "international": 3000
+            },
+            {
+                "credits": 3,
+                "in_state": 1500,
+                "out_of_state": 3000,
+                "international": 4500
+            }
+        ]
+    }
+]
+}
