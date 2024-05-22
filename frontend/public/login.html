@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TransferMax - Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.tailwindcss.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: url('https://images.pexels.com/photos/9572550/pexels-photo-9572550.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1') no-repeat center center fixed;
+            background-size: cover;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100">
+    <header class="bg-white shadow-md">
+        <div class="container mx-auto flex justify-between items-center py-4 px-6">
+            <div class="flex items-center">
+                <a href="./index.html">
+                    <img src="https://cdn.b12.io/client_media/lC4B07wH/3d38abd0-1661-11ef-8efb-0242ac110002-dc907157a60bfff1db2be84d6f8d489.png"
+                        width="300" alt="Logo" class="mr-3">
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <div class="flex justify-center items-center min-h-screen">
+        <div class="bg-white p-8 rounded shadow-lg w-full max-w-md">
+            <h2 class="text-2xl font-bold text-blue-600 mb-6 text-left">Log in</h2>
+            <form>
+                <div class="mb-4">
+                    <label class="block text-gray-700 font-bold mb-2" for="email">Email address</label>
+                    <input class="w-full px-3 py-2 border border-gray-300 rounded" id="email" type="email">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 font-bold mb-2" for="password">Password</label>
+                    <input class="w-full px-3 py-2 border border-gray-300 rounded" id="password" type="password">
+                </div>
+                <div class="mb-4 flex items-center justify-between">
+                    <label class="inline-flex items-center">
+                        <input class="form-checkbox text-blue-600" type="checkbox">
+                        <span class="ml-2 text-gray-700">Remember me</span>
+                    </label>
+                    <a class="text-blue-600 hover:underline" href="./password.html">Forgot password?</a>
+                </div>
+                <button class="w-full bg-blue-600 text-white font-bold py-2 px-4 rounded">Login</button>
+            </form>
+            <p class="text-center text-gray-600 mt-6">Don't have an account? <a href="./signup.html"
+                    class="text-blue-500 hover:underline font-semibold">Sign up</a></p>
+        </div>
+    </div>
+</body>
+
+</html>
