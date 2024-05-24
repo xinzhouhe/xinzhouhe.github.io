@@ -7,7 +7,7 @@ const Footer: React.FC = () => {
         <div className="container mx-auto flex justify-between items-start">
           <div>
             <div className="flex items-center mb-4">
-              <a href="#">
+              <a href="../index.html">
                 <span className="text-2xl font-bold">TransferMax</span>
               </a>
             </div>

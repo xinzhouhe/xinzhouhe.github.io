@@ -4,7 +4,7 @@ const About: React.FC = () => {
   return (
     <div className="container mx-auto p-8 flex flex-col md:flex-row items-center" id="about">
       <div className="md:w-1/2 mb-8 md:mb-0">
-        <h1 className="text-5xl font-bold text-blue-600 mb-4">Helping students succeed</h1>
+        <h1 className="text-5xl font-bold text-blue-600 mb-4">Helping students succeed!</h1>
         <h2 className="text-3xl font-semibold mb-4">Find equivalent community college courses</h2>
         <p className="text-2xl mb-6">TransferMax assists college students in saving time and money by identifying courses equivalent to those offered at community colleges.</p>
       </div>
