@@ -34,13 +34,13 @@ const App: React.FC = () => {
       <div id="home" className="pt-32">
         <Main />
       </div>
-      <div id="about" className="pt-16">
+      <div id="about" className="pt-32">
         <About />
       </div>
-      <div id="usage" className="pt-16">
+      <div id="usage" className="pt-32">
         <Usage />
       </div>
-      <div id="contact" className="pt-16">
+      <div id="contact" className="pt-32">
         <Contact />
       </div>
       <Footer />
