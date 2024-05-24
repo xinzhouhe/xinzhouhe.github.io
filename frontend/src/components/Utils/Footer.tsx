@@ -17,18 +17,18 @@ const Footer: React.FC = () => {
             <h3 className="text-gray-400 font-bold mb-2">QUICK LINKS</h3>
             <ul>
               <li className="mb-2"><a href="./index.html" className="text-gray-400 hover:text-white">Home</a></li>
-              <li className="mb-2"><a href="#" className="text-gray-400 hover:text-white">Privacy Policy</a></li>
-              <li className="mb-2"><a href="#" className="text-gray-400 hover:text-white">Accessibility</a></li>
-              <li className="mb-2"><a href="#" className="text-gray-400 hover:text-white">Terms of Use</a></li>
-              <li className="mb-2"><a href="#" className="text-gray-400 hover:text-white">FAQ</a></li>
+              <li className="mb-2"><a href="https://www.google.com/" className="text-gray-400 hover:text-white">Privacy Policy</a></li>
+              <li className="mb-2"><a href="https://www.google.com/" className="text-gray-400 hover:text-white">Accessibility</a></li>
+              <li className="mb-2"><a href="https://docs.google.com/document/d/15uOaAIU5d7i28y-b7Zu6UBsHZB346vjM18ae7kSL7dw/edit" className="text-gray-400 hover:text-white">Terms of Use</a></li>
+              <li className="mb-2"><a href="https://www.google.com/" className="text-gray-400 hover:text-white">FAQ</a></li>
             </ul>
           </div>
           <div>
             <h3 className="text-gray-400 font-bold mb-2">CONNECT</h3>
             <ul>
-              <li className="mb-2"><a href="#" className="text-gray-400 hover:text-white">Facebook</a></li>
-              <li className="mb-2"><a href="#" className="text-gray-400 hover:text-white">Instagram</a></li>
-              <li className="mb-2"><a href="#" className="text-gray-400 hover:text-white">YouTube</a></li>
+              <li className="mb-2"><a href="https://www.google.com/" className="text-gray-400 hover:text-white">Facebook</a></li>
+              <li className="mb-2"><a href="https://www.google.com/" className="text-gray-400 hover:text-white">Instagram</a></li>
+              <li className="mb-2"><a href="https://www.google.com/" className="text-gray-400 hover:text-white">YouTube</a></li>
             </ul>
           </div>
         </div>
