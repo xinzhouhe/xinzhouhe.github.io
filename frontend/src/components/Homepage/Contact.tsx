@@ -8,12 +8,18 @@ const Contact: React.FC = () => {
     subject: '',
     message: '',
   });
+  const [submitMessage, setSubmitMessage] = useState('');
+  const [consent, setConsent] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormState({
       ...formState,
       [e.target.id]: e.target.value,
     });
+  };
+
+  const handleConsentChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setConsent(e.target.checked);
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -23,19 +29,25 @@ const Contact: React.FC = () => {
       .then(
         (result) => {
           console.log(result.text);
-          alert('Message sent successfully!');
+          setSubmitMessage('Message sent successfully!');
+          resetForm();
         },
         (error) => {
           console.log(error.text);
-          alert('Failed to send the message, please try again.');
+          setSubmitMessage('Failed to send the message, please try again.');
+          resetForm();
         }
       );
+  };
+
+  const resetForm = () => {
     setFormState({
       name: '',
       email: '',
       subject: '',
       message: '',
     });
+    setConsent(false);
   };
 
   return (
@@ -108,7 +120,13 @@ const Contact: React.FC = () => {
             </div>
             <div className="mb-4">
               <label className="inline-flex items-center">
-                <input className="form-checkbox text-blue-600" type="checkbox" required />
+                <input
+                  className="form-checkbox text-blue-600"
+                  type="checkbox"
+                  checked={consent}
+                  onChange={handleConsentChange}
+                  required
+                />
                 <span className="ml-2 text-gray-700">
                   I allow this website to store my submission so they can respond to my inquiry.{' '}
                   <span className="text-red-500">*</span>
@@ -120,6 +138,11 @@ const Contact: React.FC = () => {
                 SUBMIT
               </button>
             </div>
+            {submitMessage && (
+              <p className={`text-center mt-4 ${submitMessage.includes('successfully') ? 'text-green-500' : 'text-red-500'}`}>
+                {submitMessage}
+              </p>
+            )}
           </form>
         </div>
       </div>

@@ -129,7 +129,7 @@ const LoginForm: React.FC = () => {
               />
               <span className="ml-2 text-gray-700">Remember me</span>
             </label>
-            <a className="text-blue-600 hover:underline" href="/reset-password">Forgot password?</a>
+            <a className="text-blue-600 hover:underline" href="/reset-password/send-link">Forgot password?</a>
           </div>
           {loginError && <p className="text-red-500 text-sm mb-4">{loginError}</p>}
           <button className="w-full bg-blue-600 text-white font-bold py-2 px-4 rounded" type="submit">Login</button>

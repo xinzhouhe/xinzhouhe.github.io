@@ -3,8 +3,6 @@ from flask import Blueprint, request, jsonify
 from flask_jwt_extended import jwt_required, get_jwt_identity, unset_jwt_cookies, create_access_token
 from werkzeug.security import generate_password_hash, check_password_hash
 from ..models import db, Student, UniversityCourseCost, University
-from datetime import timedelta
-from ..utils import*
 
 student_bp = Blueprint('students', __name__)
 
@@ -87,23 +85,3 @@ def get_student_course_cost():
     else:
         return jsonify({"cost": cost.total_international_cost})
 
-
-@student_bp.route('/me/send_reset_link', methods=['POST'])
-def send_reset_link():
-    data = request.get_json()
-    email = data.get('email')
-
-    if not email:
-        return jsonify({"message": "Email is required"}), 400
-
-    student = Student.query.filter_by(email=email).first()
-
-    if not student:
-        return jsonify({"message": "No user found with this email"}), 404
-
-    token = create_access_token(identity=student.id, expires_delta=timedelta(hours=1))
-
-    if(send_reset_password_email(email, token)):
-        return jsonify({"message": "Reset link sent successfully"}), 200
-    else:
-        return jsonify({"message": "Failed to send reset link"}), 500

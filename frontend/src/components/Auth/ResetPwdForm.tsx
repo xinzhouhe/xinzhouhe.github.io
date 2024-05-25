@@ -1,39 +1,46 @@
 import React, { useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
 
 const ResetPwdForm: React.FC = () => {
-  const [email, setEmail] = useState('');
-  const [emailError, setEmailError] = useState('');
+  const [newPassword, setNewPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [passwordError, setPasswordError] = useState('');
   const [resetError, setResetError] = useState('');
   const [resetSuccess, setResetSuccess] = useState('');
-
-  const validateEmail = (email: string) => {
-    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return regex.test(email);
-  };
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
+    const query = new URLSearchParams(location.search);
+    const token = query.get('token');
 
-    if (email === '') {
-      setEmailError('Email cannot be empty');
+    if (!token) {
+      setResetError('Invalid or missing token');
       return;
-    } else if (!validateEmail(email)) {
-      setEmailError('Email is not valid');
+    }
+
+    if (newPassword === '' || confirmPassword === '') {
+      setPasswordError('Passwords cannot be empty');
+      return;
+    } else if (newPassword !== confirmPassword) {
+      setPasswordError('Passwords do not match');
       return;
     } else {
-      setEmailError('');
+      setPasswordError('');
     }
 
     try {
-      const response = await axios.post('http://localhost:5000/students/me/send_reset_link', { email });
+      const response = await axios.post(`http://localhost:5000/auth/reset_password/${token}`, { newPassword });
 
       if (response.status === 200) {
-        setResetSuccess('Reset link sent successfully');
-        setResetError('');
+        setResetSuccess('Password reset successfully!');
+        setTimeout(() => {
+          navigate('/login');
+        }, 2000); // 2秒后跳转到登录页面
       } else {
-        setResetError('Failed to send reset link');
-        setResetSuccess('');
+        setResetError('Failed to reset password');
       }
     } catch (error) {
       if (axios.isAxiosError(error) && error.response) {
@@ -41,33 +48,39 @@ const ResetPwdForm: React.FC = () => {
       } else {
         setResetError('An error occurred. Please try again.');
       }
-      setResetSuccess('');
     }
   };
 
   return (
     <div className="flex justify-center items-center min-h-screen">
       <div className="bg-white p-8 rounded shadow-lg w-full max-w-md">
-        <h2 className="text-2xl font-bold text-blue-600 mb-6 text-center">Reset Your Password</h2>
+        <h2 className="text-2xl font-bold text-blue-600 mb-6 text-center">Change Your Password</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label className="block text-gray-700 font-bold mb-2" htmlFor="email">Email address</label>
+            <label className="block text-gray-700 font-bold mb-2" htmlFor="new-password">New Password</label>
             <input
               className="w-full px-3 py-2 border border-gray-300 rounded"
-              id="email"
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              id="new-password"
+              type="password"
+              value={newPassword}
+              onChange={(e) => setNewPassword(e.target.value)}
             />
-            {emailError && <p className="text-red-500 text-sm mt-1">{emailError}</p>}
           </div>
+          <div className="mb-4">
+            <label className="block text-gray-700 font-bold mb-2" htmlFor="confirm-password">Confirm New Password</label>
+            <input
+              className="w-full px-3 py-2 border border-gray-300 rounded"
+              id="confirm-password"
+              type="password"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+            />
+          </div>
+          {passwordError && <p className="text-red-500 text-sm mb-4">{passwordError}</p>}
           {resetError && <p className="text-red-500 text-sm mb-4">{resetError}</p>}
           {resetSuccess && <p className="text-green-500 text-sm mb-4">{resetSuccess}</p>}
-          <button className="w-full bg-blue-600 text-white font-bold py-2 px-4 rounded" type="submit">Send Reset Link</button>
+          <button className="w-full bg-blue-600 text-white font-bold py-2 px-4 rounded" type="submit">Reset Password</button>
         </form>
-        <p className="text-center text-gray-600 mt-6 hover:underline">
-          <a href="/login">Return to Log in</a>
-        </p>
       </div>
     </div>
   );
