@@ -73,7 +73,7 @@ const LoginForm: React.FC = () => {
             if (data.is_first_login) {
               navigate('/edit-profile');
             } else {
-              navigate('/dashboard');
+              navigate('/userpage');
             }
           }, 2000); // 2 seconds delay
         }
@@ -132,7 +132,7 @@ const LoginForm: React.FC = () => {
             <a className="text-blue-600 hover:underline" href="/reset-password/send-link">Forgot password?</a>
           </div>
           {loginError && <p className="text-red-500 text-sm mb-4">{loginError}</p>}
-          <button className="w-full bg-blue-600 text-white font-bold py-2 px-4 rounded" type="submit">Login</button>
+          <button className="w-full bg-blue-600 text-white font-bold py-2 px-4 rounded" type="submit" >Login</button>
         </form>
         <p className="text-center text-gray-600 mt-6">Don't have an account? <a href="/signup" className="text-blue-500 hover:underline font-semibold">Sign up</a></p>
       </div>
