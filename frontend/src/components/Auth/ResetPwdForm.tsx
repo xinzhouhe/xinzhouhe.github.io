@@ -1,24 +1,47 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
 const ResetPwdForm: React.FC = () => {
   const [email, setEmail] = useState('');
   const [emailError, setEmailError] = useState('');
+  const [resetError, setResetError] = useState('');
+  const [resetSuccess, setResetSuccess] = useState('');
 
   const validateEmail = (email: string) => {
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return regex.test(email);
   };
 
-  const handleSubmit = (event: React.FormEvent) => {
+  const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
+
     if (email === '') {
       setEmailError('Email cannot be empty');
+      return;
     } else if (!validateEmail(email)) {
       setEmailError('Email is not valid');
+      return;
     } else {
       setEmailError('');
-      // Proceed with sending reset link
-      console.log('Reset link sent to', email);
+    }
+
+    try {
+      const response = await axios.post('http://localhost:5000/students/me/send_reset_link', { email });
+
+      if (response.status === 200) {
+        setResetSuccess('Reset link sent successfully');
+        setResetError('');
+      } else {
+        setResetError('Failed to send reset link');
+        setResetSuccess('');
+      }
+    } catch (error) {
+      if (axios.isAxiosError(error) && error.response) {
+        setResetError(error.response.data.message);
+      } else {
+        setResetError('An error occurred. Please try again.');
+      }
+      setResetSuccess('');
     }
   };
 
@@ -38,6 +61,8 @@ const ResetPwdForm: React.FC = () => {
             />
             {emailError && <p className="text-red-500 text-sm mt-1">{emailError}</p>}
           </div>
+          {resetError && <p className="text-red-500 text-sm mb-4">{resetError}</p>}
+          {resetSuccess && <p className="text-green-500 text-sm mb-4">{resetSuccess}</p>}
           <button className="w-full bg-blue-600 text-white font-bold py-2 px-4 rounded" type="submit">Send Reset Link</button>
         </form>
         <p className="text-center text-gray-600 mt-6 hover:underline">

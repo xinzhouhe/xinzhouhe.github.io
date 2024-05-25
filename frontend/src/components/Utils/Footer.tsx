@@ -7,7 +7,7 @@ const Footer: React.FC = () => {
         <div className="container mx-auto flex justify-between items-start">
           <div>
             <div className="flex items-center mb-4">
-              <a href="../index.html">
+              <a href="/">
                 <span className="text-2xl font-bold">TransferMax</span>
               </a>
             </div>
@@ -16,7 +16,7 @@ const Footer: React.FC = () => {
           <div>
             <h3 className="text-gray-400 font-bold mb-2">QUICK LINKS</h3>
             <ul>
-              <li className="mb-2"><a href="./index.html" className="text-gray-400 hover:text-white">Home</a></li>
+              <li className="mb-2"><a href="/" className="text-gray-400 hover:text-white">Home</a></li>
               <li className="mb-2"><a href="https://www.google.com/" className="text-gray-400 hover:text-white">Privacy Policy</a></li>
               <li className="mb-2"><a href="https://www.google.com/" className="text-gray-400 hover:text-white">Accessibility</a></li>
               <li className="mb-2"><a href="https://docs.google.com/document/d/15uOaAIU5d7i28y-b7Zu6UBsHZB346vjM18ae7kSL7dw/edit" className="text-gray-400 hover:text-white">Terms of Use</a></li>

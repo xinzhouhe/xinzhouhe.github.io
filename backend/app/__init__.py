@@ -1,7 +1,7 @@
 # backend/app/__init__.py
 from flask import Flask, send_from_directory
 from .config import Config
-from .extensions import db, jwt
+from .extensions import db, jwt, mail
 from .routes import register_routes
 
 def create_app():
@@ -10,6 +10,7 @@ def create_app():
 
     db.init_app(app)
     jwt.init_app(app)
+    mail.init_app(app)
 
     # 注册控制器中的路由
     register_routes(app)

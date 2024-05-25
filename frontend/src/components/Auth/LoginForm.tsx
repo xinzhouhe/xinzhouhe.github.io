@@ -1,17 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const LoginForm: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [rememberMe, setRememberMe] = useState(false);
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
+  const [loginError, setLoginError] = useState('');
+
+  useEffect(() => {
+    const rememberedEmail = localStorage.getItem('rememberedEmail');
+    if (rememberedEmail) {
+      setEmail(rememberedEmail);
+      setRememberMe(true);
+    }
+  }, []);
+
+  const navigate = useNavigate();
 
   const validateEmail = (email: string) => {
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return regex.test(email);
   };
 
-  const handleSubmit = (event: React.FormEvent) => {
+  const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     let valid = true;
 
@@ -33,8 +47,48 @@ const LoginForm: React.FC = () => {
     }
 
     if (valid) {
-      // Proceed with form submission
-      console.log('Form submitted');
+      // Make the API call to log in using axios
+      try {
+        const response = await axios.post('http://localhost:5000/auth/login', {
+          email,
+          password,
+        });
+
+        if (response.status === 200) {
+          const data = response.data;
+          console.log('Login successful', data);
+          // You can now store the access token in local storage or a context/state management library
+          localStorage.setItem('accessToken', data.access_token);
+
+          // Handle "Remember Me" functionality
+          if (rememberMe) {
+            localStorage.setItem('rememberedEmail', email);
+          } else {
+            localStorage.removeItem('rememberedEmail');
+          }
+          setLoginError('');
+
+          // Redirect to another page after successful login
+          setTimeout(() => {
+            if (data.is_first_login) {
+              navigate('/edit-profile');
+            } else {
+              navigate('/dashboard');
+            }
+          }, 2000); // 2 seconds delay
+        }
+      } catch (error) {
+        if (axios.isAxiosError(error) && error.response) {
+          setLoginError(error.response.data.message);
+        } else {
+          setLoginError('An error occurred. Please try again.');
+        }
+
+        // Reset all inputs on unsuccessful login
+        setEmail('');
+        setPassword('');
+        setRememberMe(false);
+      }
     }
   };
 
@@ -67,11 +121,17 @@ const LoginForm: React.FC = () => {
           </div>
           <div className="mb-4 flex items-center justify-between">
             <label className="inline-flex items-center">
-              <input className="form-checkbox text-blue-600" type="checkbox" />
+              <input
+                className="form-checkbox text-blue-600"
+                type="checkbox"
+                checked={rememberMe}
+                onChange={(e) => setRememberMe(e.target.checked)}
+              />
               <span className="ml-2 text-gray-700">Remember me</span>
             </label>
             <a className="text-blue-600 hover:underline" href="/reset-password">Forgot password?</a>
           </div>
+          {loginError && <p className="text-red-500 text-sm mb-4">{loginError}</p>}
           <button className="w-full bg-blue-600 text-white font-bold py-2 px-4 rounded" type="submit">Login</button>
         </form>
         <p className="text-center text-gray-600 mt-6">Don't have an account? <a href="/signup" className="text-blue-500 hover:underline font-semibold">Sign up</a></p>

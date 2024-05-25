@@ -3,12 +3,14 @@ from flask.cli import with_appcontext
 from flask_migrate import Migrate
 from app import create_app, db
 from app.models import*
+from flask_cors import CORS
 import click
 import os
 import json
 import unittest
 
 app = create_app()
+CORS(app)
 migrate = Migrate(app, db)
 
 @app.cli.command("init-db")
@@ -222,6 +224,12 @@ def run_tests():
     print("Some tests failed.")
     return 1
 
+@app.cli.command("reset-db")
+@with_appcontext
+def reset_db():
+    """Reset the database by cleaning and pumping data."""
+    db.drop_all()
+    db.create_all()
 
 if __name__ == '__main__':
     app.run()

@@ -12,10 +12,9 @@ auth_bp = Blueprint('auth', __name__)
 def register():
     data = request.get_json()
 
-    try:
-        register_data = RegisterSchema().load(data)
-    except ValidationError as err:
-        return jsonify(err.messages), 400
+    email_exists = Student.query.filter_by(email=data['email']).first()
+    if email_exists:
+        return jsonify({"message": "Email already exists"}), 400
 
     hashed_password = generate_password_hash(data['password'], method='pbkdf2:sha256')
     new_student = Student(
@@ -23,8 +22,8 @@ def register():
         email=data['email'],
         password=hashed_password,
         university_id=data['university_id'],
-        state=data['location'],
-        us_citizen=data['status'],
+        state=data['state'],
+        us_citizen=data['us_citizen'],
         credits = 0,
         has_paid=False
     )
@@ -43,7 +42,13 @@ def login():
     
     student = Student.query.filter_by(email=data['email']).first()
     if not student or not check_password_hash(student.password, data['password']):
-        return jsonify({"message": "Invalid credentials"}), 401
+        return jsonify({"message": "Mailbox does not exist or password is incorrect."}), 401
+    
+    is_first_login = student.is_first_login
+    if is_first_login:
+        student.is_first_login = False
+        db.session.commit()
+    
     access_token = create_access_token(identity=student.id)
     return jsonify(access_token=access_token), 200
 

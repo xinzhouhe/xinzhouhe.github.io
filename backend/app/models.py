@@ -32,11 +32,12 @@ class Student(db.Model):
     name = db.Column('Name', db.String(255), nullable=False)
     email = db.Column('Email', db.String(255), unique=True, nullable=False)
     password = db.Column('Password', db.String(128), nullable=False)
-    university_id = db.Column('UniversityID', db.Integer, db.ForeignKey('university.UniversityID'), nullable=False)
+    university_id = db.Column('UniversityID', db.Integer, db.ForeignKey('university.UniversityID'), nullable=True)
     has_paid = db.Column('HasPaid', db.Boolean, default=False)
-    state = db.Column('Location', db.String(255))
-    us_citizen = db.Column('USCitizen', db.Boolean, default=True)
+    state = db.Column('Location', db.String(255), nullable=True)
+    us_citizen = db.Column('USCitizen', db.Boolean, nullable=True)
     credits = db.Column('Credits', db.Integer, default=0)
+    # is_first_login = db.Column('IsFirstLogin', db.Boolean, default=True)
 
     courses = db.relationship('StudentCourse', backref='student', lazy=True)
 

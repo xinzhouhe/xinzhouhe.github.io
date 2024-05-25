@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const SignupForm: React.FC = () => {
   const [firstName, setFirstName] = useState('');
@@ -13,13 +15,17 @@ const SignupForm: React.FC = () => {
     password: '',
     confirmPassword: ''
   });
+  const [registerError, setRegisterError] = useState('');
+  const [registerSuccess, setRegisterSuccess] = useState('');
+
+  const navigate = useNavigate();
 
   const validateEmail = (email: string) => {
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return regex.test(email);
   };
 
-  const handleSubmit = (event: React.FormEvent) => {
+  const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     let valid = true;
     let newErrors = {
@@ -61,7 +67,39 @@ const SignupForm: React.FC = () => {
 
     if (valid) {
       // Proceed with form submission
-      console.log('Form submitted');
+      try {
+        const response = await axios.post('http://localhost:5000/auth/register', {
+          name: `${firstName} ${lastName}`,
+          email,
+          password,
+          university_id: null,
+          state: '',
+          us_citizen: null,
+        });
+
+        if (response.status === 201) {
+          setRegisterSuccess('Student registered successfully');
+          setRegisterError('');
+
+          // Redirect to the login page after a short delay
+          setTimeout(() => {
+            navigate('/login');
+          }, 2000); // 2 seconds delay
+        } else {
+          setRegisterError('Registration failed');
+        }
+      } catch (error) {
+        if (axios.isAxiosError(error) && error.response) {
+          if (error.response.status === 400 && error.response.data.message === 'Email already exists') {
+            setRegisterError('Email already exists');
+          } else {
+            setRegisterError(error.response.data.message);
+          }
+        } else {
+          setRegisterError('An error occurred. Please try again.');
+        }
+        setRegisterSuccess('');
+      }
     }
   };
 
@@ -125,9 +163,11 @@ const SignupForm: React.FC = () => {
             />
             {errors.confirmPassword && <p className="text-red-500 text-sm mt-1">{errors.confirmPassword}</p>}
           </div>
+          {registerError && <p className="text-red-500 text-sm mb-4">{registerError}</p>}
+          {registerSuccess && <p className="text-green-500 text-sm mb-4">{registerSuccess}</p>}
           <button className="w-full bg-green-500 text-white font-bold py-2 px-4 rounded hover:bg-green-600" type="submit">Sign Up</button>
         </form>
-        <p className="text-center text-gray-600 mt-6">Already have an account? <a href="./login" className="text-green-600 hover:underline font-semibold">Log in</a></p>
+        <p className="text-center text-gray-600 mt-6">Already have an account? <a href="/login" className="text-green-600 hover:underline font-semibold">Log in</a></p>
       </div>
     </div>
   );
