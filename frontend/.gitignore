@@ -8,8 +8,7 @@
 # testing
 /coverage
 
-# virtual environment
-/venv
+
 
 # production
 /build
