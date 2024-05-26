@@ -59,6 +59,7 @@ const LoginForm: React.FC = () => {
           console.log('Login successful', data);
           // You can now store the access token in local storage or a context/state management library
           localStorage.setItem('accessToken', data.access_token);
+          localStorage.setItem('is_login', 'true'); // Set is_login variable
 
           // Handle "Remember Me" functionality
           if (rememberMe) {
@@ -71,9 +72,9 @@ const LoginForm: React.FC = () => {
           // Redirect to another page after successful login
           setTimeout(() => {
             if (data.is_first_login) {
-              navigate('/edit-profile');
+              navigate('/user/edit-profile');
             } else {
-              navigate('/userpage');
+              navigate('/user/dashboard');
             }
           }, 2000); // 2 seconds delay
         }
