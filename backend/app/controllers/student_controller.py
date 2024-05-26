@@ -11,12 +11,13 @@ student_bp = Blueprint('students', __name__)
 def get_logged_in_student():
     student_id = get_jwt_identity()
     student = Student.query.get_or_404(student_id)
+    print(f"STUDENT IS  {student.university_id}")
     
     return jsonify({
         "id": student.id,
         "name": student.name,
         "email": student.email,
-        "university": University.query.get(student.university_id).name,
+        # "university": University.query.get(student.university_id).name,
         "has_paid": student.has_paid,
         "location": student.state,
         "us_citizen": student.us_citizen,

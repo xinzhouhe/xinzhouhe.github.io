@@ -10,7 +10,7 @@ import json
 import unittest
 
 app = create_app()
-CORS(app)
+CORS(app, supports_credentials=True)
 migrate = Migrate(app, db)
 
 @app.cli.command("init-db")
