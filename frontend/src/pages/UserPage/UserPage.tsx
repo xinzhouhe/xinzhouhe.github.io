@@ -1,7 +1,7 @@
 import React , { useState, useEffect } from 'react';
 import Header from "../../components/Utils/Header";
 import Footer from "../../components/Utils/Footer";
-import Dashboard from "../../components/UserPage/Dashboard";
+import Dashboard from "../../components/Dashboard/Dashboard";
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import "./UserPage.css";
@@ -54,7 +54,7 @@ const UserPage: React.FC = () => {
     
           // Clear the token and navigate to the login page
           localStorage.removeItem('accessToken');
-          navigate('/login');
+          navigate('/');
         } catch (error) {
           console.error('Failed to logout', error);
         }
@@ -76,7 +76,7 @@ return (
                                 <a className="edit-profile" href="/">
                                     Edit Profile
                                 </a>
-                                <a className="logout" href="/" onClick={handleLogout}>
+                                <a className="logout" onClick={handleLogout}>
                                     Log Out
                                 </a>
                             </div>

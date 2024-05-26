@@ -4,17 +4,42 @@ import Navbar from '../../components/Homepage/Navbar';
 import Main from '../../components/Homepage/Main';
 import About from '../../components/Homepage/About';
 import Usage from '../../components/Homepage/Usage';
+import axios from 'axios';
 import Contact from '../../components/Homepage/Contact';
 import Footer from '../../components/Utils/Footer';
 import { Helmet } from 'react-helmet';
 import './HomePage.css';
 
 const Home: React.FC = () => {
-  const [isLogin, setIsLogin] = useState(false);
+  const [isAccessTokenRemoved, setIsAccessTokenRemoved] = useState<boolean>(false);
+  const [name, setName] = useState<string | null>(null);
 
   useEffect(() => {
-    const loginStatus = localStorage.getItem('is_login') === 'true';
-    setIsLogin(loginStatus);
+    console.log("inside home page: " + localStorage.getItem('accessToken'));
+    const tokenRemoved = localStorage.getItem('accessToken') === null;
+    setIsAccessTokenRemoved(tokenRemoved);
+
+    if (!tokenRemoved) {
+      // If the access token is not removed, fetch the user's name
+      const fetchUserName = async () => {
+        try {
+          const accessToken = localStorage.getItem('accessToken');
+          if (accessToken) {
+            const response = await axios.get('http://localhost:5000/students/me', {
+              headers: {
+                Authorization: `Bearer ${accessToken}`,
+              },
+              withCredentials: true
+            });
+            setName(response.data.name);
+          }
+        } catch (error) {
+          console.error('Error fetching user data:', error);
+        }
+      };
+
+      fetchUserName();
+    }
   }, []);
 
   return (
@@ -26,12 +51,12 @@ const Home: React.FC = () => {
         <header className="bg-white shadow-md">
           <div className="container mx-auto flex justify-between items-center py-4 px-6">
             <Header />
-            {isLogin ? (
+            { !isAccessTokenRemoved ? (
               <nav className="space-x-4 flex items-center">
                 <div className="relative dropdown">
                   <button className="bg-blue-600 text-white px-4 py-2 rounded-full hover:bg-blue-700 flex items-center">
                     <i className="fa fa-user mr-2"></i>
-                    <span>John Pan</span>
+                    {name ? <span>{name}</span> : <span>Loading...</span>}
                   </button>
                   <div className="dropdown-menu absolute right-0 mt-2 w-48 bg-white shadow-lg rounded-lg py-2 z-50">
                     <a className="edit-profile block px-4 py-2 text-gray-800 hover:bg-gray-100" href="/">
@@ -41,8 +66,8 @@ const Home: React.FC = () => {
                       className="logout block px-4 py-2 text-gray-800 hover:bg-gray-100"
                       href="/"
                       onClick={() => {
-                        localStorage.removeItem('is_login');
-                        setIsLogin(false);
+                        localStorage.removeItem('accessToken');
+                        setIsAccessTokenRemoved(true);
                       }}
                     >
                       Log Out
