@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 
 const Main: React.FC = () => {
-  const [isLogin, setIsLogin] = useState(false);
+  const [isAccessTokenRemoved, setIsAccessTokenRemoved] = useState<boolean>(false);
 
   useEffect(() => {
-    const loginStatus = localStorage.getItem('is_login') === 'true';
-    setIsLogin(loginStatus);
+    const tokenRemoved = localStorage.getItem('accessToken') === null;
+    setIsAccessTokenRemoved(tokenRemoved);
   }, []);
 
   return (
@@ -19,12 +19,12 @@ const Main: React.FC = () => {
         <h2 className="text-6xl font-bold mb-4">TransferMax</h2>
         <p className="text-2xl mb-6">Simplify Your Course Transfers and Save Money</p>
         <a 
-          href={isLogin ? "/user/dashboard" : "/signup"} 
+          href={isAccessTokenRemoved ? "/signup" : "/user/dashboard"} 
           className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full text-xl"
         >
-          {isLogin ? "My Dashboard" : "Get Started"}
+          {isAccessTokenRemoved ?  "Get Started" : "My Dashboard"}
         </a>
-        {!isLogin && (
+        {isAccessTokenRemoved && (
           <p className="text-lg mt-6">
             Have an account? <a href="/login" className="text-white semi-bold hover:underline font-semibold">Log in</a>
           </p>

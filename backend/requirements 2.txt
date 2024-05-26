@@ -1,8 +1,0 @@
-Flask
-Flask-SQLAlchemy
-Flask-Migrate
-Flask-JWT-Extended
-python-dotenv
-marshmallow
-flask_cors
-flask_mail
