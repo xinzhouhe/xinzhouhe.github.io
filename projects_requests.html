@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Source Code Request Access</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="form-container">
+        <div class="source-code-request-form">
+            <!-- modify this form HTML and place wherever you want your form -->
+            <form action="https://formspree.io/f/xleqjzba" method="POST">
+                <label>
+                    Your name:
+                    <input type="text" name="name" required>
+                </label>
+                <label>
+                    Your email:
+                    <input type="email" name="email" required>
+                </label>
+                <label>
+                    Your message:
+                    <textarea name="message"></textarea>
+                </label>
+                <label>
+                    <input type="checkbox" name="honor-code-acknowledgement" required>
+                    By submitting this form, you affirm your adherence to the principles of the engineering honor code
+                    and consent to bear any legal or civil liabilities that may arise from improper use of the requested
+                    materials.
+                </label>
+                <button type="submit" onclick="window.location.href='request_confirmation.html';">Send</button>
+            </form>
+            <!-- Control Buttons -->
+            <div class="buttons">
+                <button type="button" onclick="window.location.href='projects.html';">Cancel and Take Me Back</button>
+            </div>
+        </div>
+
+    </div>
+    <footer>
+        <div id="footer"></div>
+    </footer>
+</body>
+
+</html>

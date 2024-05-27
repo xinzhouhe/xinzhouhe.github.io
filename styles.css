@@ -1,0 +1,296 @@
+/* styles.css */
+/*
+ * Importing the font
+ */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;700&display=swap');
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    background-color: #f9f9f9;
+    /*#fdf9e6;*/
+    font-family: 'IBM Plex Sans';
+    color: #525252;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+
+header {
+    background: #00274C;
+    color: #fff;
+    padding-top: 30px;
+    min-height: 70px;
+    border-bottom: #777 3px solid;
+}
+
+header a {
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 16px;
+}
+
+header ul {
+    padding: 0;
+    list-style: none;
+}
+
+header li {
+    display: inline;
+    padding: 0 20px 0 20px;
+}
+
+header #branding {
+    float: left;
+}
+
+header #branding h1 {
+    margin: 0;
+}
+
+header nav {
+    float: right;
+    margin-top: 10px;
+}
+
+header .highlight,
+header .current a {
+    color: #FFCB05;
+    font-weight: bold;
+}
+
+header a:hover {
+    color: #FFCB05;
+    font-weight: bold;
+}
+
+.content-wrap {
+    flex: 1 0 auto;
+    /* This line will push the footer down */
+}
+
+footer {
+    background-color: #00274C;
+    color: #FFCB05;
+    border-width: 5px;
+    flex-shrink: 0;
+    /* Prevents the footer from shrinking */
+    /* Add your styling here (background, padding, etc.) */
+}
+
+/* Courses page */
+.course-section {
+    margin: 2rem auto;
+    padding: 1rem;
+    max-width: 800px;
+}
+
+.course-section h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.course-section ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.course-section li {
+    background-color: #f4f4f4;
+    margin-bottom: 0.5rem;
+    padding: 0.5rem;
+    border-left: 4px solid #00274C;
+    /* This color can match your theme */
+}
+
+/* Projects page*/
+.projects-section {
+    background-color: #f4f4f4;
+    /* Adjust the background color as needed */
+    padding: 2rem;
+}
+
+.project {
+    background-color: white;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.project h3 {
+    color: #333;
+}
+
+.project p {
+    color: #666;
+}
+
+.project-link {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: #00274C;
+    /* Use a color that matches your site's theme */
+    color: #FFCB05;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.project-link:hover {
+    background-color: #FFCB05;
+    /* Reverse the color for the hover effects */
+    color: #00274C;
+}
+
+
+/* Style adjustments for the contact form */
+.contact-form {
+    background: #f9f9f9;
+    padding: 15px;
+    border: 0px solid #e2e2e2;
+    border-radius: 5px;
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+.contact-form label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 0px solid #ddd;
+    border-radius: 0px;
+    box-sizing: border-box;
+    /* Makes sure the padding doesn't affect the overall width */
+    margin-bottom: 10px;
+}
+
+.contact-form textarea {
+    height: 150px;
+}
+
+.contact-form button[type="submit"] {
+    background: #333;
+    color: #fdf9e6;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 0px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.contact-form button[type="submit"]:hover {
+    background: #777777;
+}
+
+/* Ensure the button text is centered */
+.contact-form button[type="submit"] {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* ***********************
+ * Projects access request
+ */
+.source-code-request-form {
+    background: #f9f9f9;
+    padding: 15px;
+    border: 0px solid #e2e2e2;
+    border-radius: 5px;
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+.source-code-request-form label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+.source-code-request-form input[type="text"],
+.source-code-request-form input[type="email"],
+.source-code-request-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 0px solid #ddd;
+    border-radius: 0px;
+    box-sizing: border-box;
+    /* Makes sure the padding doesn't affect the overall width */
+    margin-bottom: 10px;
+}
+
+.source-code-request-form textarea {
+    height: 150px;
+}
+
+.source-code-request-form button[type="submit"] {
+    background: #333;
+    color: #fdf9e6;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 0px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.source-code-request-form button[type="submit"]:hover {
+    background: #777777;
+}
+
+/* Ensure the button text is centered */
+.source-code-request-form button[type="submit"] {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/***************************/
+
+/* Mobile Styling */
+@media only screen and (max-width: 768px) {
+    /* Adjust styles for mobile here */
+
+    .container {
+        width: 95%;
+        padding: 0;
+    }
+
+    .hero {
+        /* Adjust hero section padding or margins as necessary for smaller screens */
+        padding: 20px;
+    }
+
+    .hero-content h1 {
+        font-size: 1.5rem;
+        /* Smaller font size for hero title */
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+        /* Smaller font size for hero subtitle */
+    }
+
+    .hero-btn {
+        padding: 10px 15px;
+        /* Adjust button padding as necessary */
+    }
+
+    /* Add additional style adjustments for other elements as needed */
+}
