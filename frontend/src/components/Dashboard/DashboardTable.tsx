@@ -1,94 +1,44 @@
 import React from "react";
 
 const DashboardTable = () => {
+    const calculateOldPrice = (newPrice: number) => {
+        return (newPrice / 0.70).toFixed(2);
+    };
+
+    const courses = [
+        { original: "English 101", genEd: "English", credits: 3, equivalent: "Eng 234", newPrice: 325, online: "Y" },
+        { original: "Math 101", genEd: "Mathematics", credits: 4, equivalent: "Math 201", newPrice: 400, online: "Y" },
+        { original: "History 101", genEd: "History", credits: 3, equivalent: "Hist 202", newPrice: 350, online: "N" },
+    ];
+
     return (
         <table className="dashboard-table">
-                <thead>
-                    <tr>
-                        <th>
-                            Original Course
-                        </th>
-                        <th>
-                            Gen Ed Requirement
-                        </th>
-                        <th>
-                            Credits
-                        </th>
-                        <th>
-                            Equivalent Course
-                        </th>
-                        <th>
-                            New Price
-                        </th>
-                        <th>
-                            Online
-                        </th>
+            <thead>
+                <tr>
+                    <th>Original Course (University of Delaware)</th>
+                    <th>Gen Ed Requirement</th>
+                    <th>Old Price</th>
+                    <th>Credits</th>
+                    <th>Equivalent Course (Rutgers New Brunswick)</th>
+                    <th>New Price</th>
+                    <th>Online</th>
+                </tr>
+            </thead>
+            <tbody>
+                {courses.map((course, index) => (
+                    <tr key={index}>
+                        <td>{course.original}</td>
+                        <td>{course.genEd}</td>
+                        <td>${calculateOldPrice(course.newPrice)}</td>
+                        <td>{course.credits}</td>
+                        <td>{course.equivalent}</td>
+                        <td>${course.newPrice}</td>
+                        <td>{course.online}</td>
                     </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            English 101
-                        </td>
-                        <td>
-                            English
-                        </td>
-                        <td>
-                            3
-                        </td>
-                        <td>
-                            Eng 234
-                        </td>
-                        <td>
-                            $325
-                        </td>
-                        <td>
-                            Y
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            Math 101
-                        </td>
-                        <td>
-                            Mathematics
-                        </td>
-                        <td>
-                            4
-                        </td>
-                        <td>
-                            Math 201
-                        </td>
-                        <td>
-                            $400
-                        </td>
-                        <td>
-                            Y
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            History 101
-                        </td>
-                        <td>
-                            History
-                        </td>
-                        <td>
-                            3
-                        </td>
-                        <td>
-                            Hist 202
-                        </td>
-                        <td>
-                            $350
-                        </td>
-                        <td>
-                            N
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-    )
-}
+                ))}
+            </tbody>
+        </table>
+    );
+};
 
 export default DashboardTable;

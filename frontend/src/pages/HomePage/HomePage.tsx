@@ -54,11 +54,13 @@ const Home: React.FC = () => {
             { !isAccessTokenRemoved ? (
               <nav className="space-x-4 flex items-center">
                 <div className="relative dropdown">
+
                   <button className="bg-blue-600 text-white px-4 py-2 rounded-full hover:bg-blue-700 flex items-center">
+
                     <i className="fa fa-user mr-2"></i>
                     {name ? <span>{name}</span> : <span>Loading...</span>}
                   </button>
-                  <div className="dropdown-menu absolute right-0 mt-2 w-48 bg-white shadow-lg rounded-lg py-2 z-50">
+                  <div className="dropdown-menu">
                     <a className="edit-profile block px-4 py-2 text-gray-800 hover:bg-gray-100" href="/">
                       Edit Profile
                     </a>
